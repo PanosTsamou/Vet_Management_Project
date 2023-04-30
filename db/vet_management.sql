@@ -1,6 +1,11 @@
+DROP TABLE IF EXISTS appointments;
+DROP TABLE IF EXISTS specializations;
+
+DROP TABLE IF EXISTS pets;
+DROP TABLE IF EXISTS breeds;
 DROP TABLE IF EXISTS vets;
+DROP TABLE IF EXISTS species;
 DROP TABLE IF EXISTS owners;
-DROP TABLE IF EXISTS animals;
 
 
 CREATE TABLE owners(
@@ -8,17 +13,39 @@ CREATE TABLE owners(
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     dob VARCHAR(255),
-    adress VARCHAR(255),
+    address VARCHAR(255),
     tel_number VARCHAR(255),
-    email VARCHAR(255)
+    email VARCHAR(255),
+    img VARCHAR(255)
+);
+
+CREATE TABLE species(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE breeds(
+    id SERIAL PRIMARY KEY,
+    breed VARCHAR(255)
+);
+
+CREATE TABLE vets(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    dob VARCHAR(255),
+    address VARCHAR(255),
+    tel_number VARCHAR(255),
+    email VARCHAR(255),
+    img VARCHAR(255)
 );
 
 CREATE TABLE pets(
     id SERIAL PRIMARY KEY,
     pet_name VARCHAR(255),
-    age INT,
+    dob VARCHAR(255),
     pet_weight INT,
-    owner_id INT NOT NULL REFERENCES owner(id),
+    owner_id INT NOT NULL REFERENCES owners(id),
     species_id INT NOT NULL REFERENCES species(id),
     breed_id INT NOT NULL REFERENCES breeds(id),
     chipped BOOLEAN,
@@ -27,20 +54,7 @@ CREATE TABLE pets(
     pet_img VARCHAR(255)
 );
 
-CREATE TABLE vets(
-    id SERIAL PRIMARY KEY,
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    dob VARCHAR(255),
-    adress VARCHAR(255),
-    tel_number VARCHAR(255),
-    email VARCHAR(255)
-);
 
-CREATE TABLE species(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
-);
 
 CREATE TABLE appointments(
     id SERIAL PRIMARY KEY,
@@ -49,10 +63,6 @@ CREATE TABLE appointments(
     description VARCHAR(255)
 );
 
-CREATE TABLE breeds(
-    id SERIAL PRIMARY KEY,
-    breed VARCHAR(255)
-);
 
 CREATE TABLE specializations(
     id SERIAL PRIMARY KEY,

@@ -1,6 +1,6 @@
 class Person:
 
-    def __init__(self, input_first_name, input_last_name, input_dob, input_address, input_email, input_phone_number, input_img, input_user_name, input_password):
+    def __init__(self, input_first_name, input_last_name, input_dob, input_address, input_email, input_phone_number, input_img, input_user_name = None, input_password = None):
         self.first_name = input_first_name
         self.last_name = input_last_name
         self.dob = input_dob

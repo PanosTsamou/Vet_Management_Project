@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS specializations;
-
+DROP TABLE IF EXISTS owners_users;
+DROP TABLE IF EXISTS vets_users;
+DROP TABLE IF EXISTS admins;
 DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS breeds;
 DROP TABLE IF EXISTS vets;
@@ -40,18 +42,40 @@ CREATE TABLE vets(
     img VARCHAR(255)
 );
 
+CREATE TABLE owners_users(
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255),
+    password VARCHAR(255),
+    owner_id INT NOT NULL REFERENCES owners(id)
+);
+CREATE TABLE vets_users(
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255),
+    password VARCHAR(255),
+    vet_id INT NOT NULL REFERENCES vets(id)
+);
+CREATE TABLE admins(
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255),
+    password VARCHAR(255)
+);
+
 CREATE TABLE pets(
     id SERIAL PRIMARY KEY,
-    pet_name VARCHAR(255),
+    name VARCHAR(255),
     dob VARCHAR(255),
-    pet_weight INT,
-    owner_id INT NOT NULL REFERENCES owners(id),
-    species_id INT NOT NULL REFERENCES species(id),
-    breed_id INT NOT NULL REFERENCES breeds(id),
-    chipped BOOLEAN,
-    chip_number INT,
+    weight INT,
     sex VARCHAR(255),
-    pet_img VARCHAR(255)
+    species VARCHAR(255),
+    breed VARCHAR(255),
+    img VARCHAR(255), 
+    treatment  VARCHAR(255),
+    chipped BOOLEAN,
+    chip_number VARCHAR(255),
+    -- species_id INT NOT NULL REFERENCES species(id),
+    -- breed_id INT NOT NULL REFERENCES breeds(id),
+    owner_id INT NOT NULL REFERENCES owners(id),
+    veterian_id INT NOT NULL REFERENCES vets(id)
 );
 
 

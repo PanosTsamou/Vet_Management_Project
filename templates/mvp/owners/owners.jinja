@@ -1,0 +1,17 @@
+{% extends "base.jinja" %}
+{% block aside %}
+    <a href="/pets/new-owner"><h2>Add a New Customer</h2></a>
+{% endblock aside %}
+
+{% block content %}
+
+    <ul>
+    {% for owner in display_owners %}
+        <li>
+            <a href="/owners/{{owner.id}}">
+                    <h2>Name: {{owner.full_name()}}</h2>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

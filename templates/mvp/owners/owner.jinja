@@ -1,0 +1,41 @@
+{% extends "base.jinja" %}
+{% block aside %}
+    <a href="/owners/new-owner"><h2>Add a New Customer</h2></a>
+{% endblock aside %}
+
+{% block content %}
+    <section>
+        <div>
+            <h2>{{owner.full_name()}}</h2>
+            <h4>DOB: {{owner.dob}}</h4>
+            <h4>Address: {{owner.address}}</h4>
+            <h4>Email: {{owner.email}}</h4>
+            <h4>Phone: {{owner.phone_number}}</h4>
+            <form action="/owners/{{owner.id}}/delete" method="post">
+                <input type="submit" value="Delete"/>
+            </form>
+            <form action="/owners/{{owner.id}}/edit" method="post">
+                <input type="submit" value="Edit"/>
+            </form>
+        </div>
+        <img src="{{owner.img}}">
+    </section>
+    <section>
+        <h2> All my Pets</h2>
+        <div>
+            {% for pet in list_of_pets %}
+                <a href="/pets/{{pet.id}}">
+                    <div>
+                        <h4>Name: {{pet.name}}</h4>
+                        <h4>Spicies: {{pet.species}}</h4>
+                        <h4>Sex: {{pet.sex}}</h4>
+                        <h4>Chip: {{pet.chip_number}}</h4>
+                    </div>
+                    <form action="/pets/{{pet.id}}/delete" method="post">
+                        <input type="submit" value="Delete"/>
+                    </form>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

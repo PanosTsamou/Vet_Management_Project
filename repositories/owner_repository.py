@@ -1,6 +1,6 @@
 from db.run_sql import run_sql
 
-from modules.owner import Owner
+from modules.owner import *
 
 def add_owner(owner):
     sql = "INSERT INTO owners(first_name, last_name, dob, address, tel_number, email, img) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
@@ -12,17 +12,18 @@ def all_owners():
     sql = "SELECT * FROM owners"
     results = run_sql(sql)
     for row in results:
-        owner = Owner(row['first_name'], row['last_name'], row['dob'], row['address'], row['email'],row['tel_number'], row['img'])
+        owner = Owner(row['first_name'], row['last_name'], row['dob'], row['address'], row['email'],row['tel_number'], row['img'], row['id'])
         owners.append(owner)
     return owners
 
 def find_owner_by_id(id):
+    owner= None
     sql = "SELECT * FROM owners WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        owner = Owner(result['first_name'], result['last_name'], result['dob'], result['address'], result['email'],result['tel_number'], result['img'])
+        owner = Owner(result['first_name'], result['last_name'], result['dob'], result['address'], result['email'],result['tel_number'], result['img'], id)
     return owner
 
 def delete_all():
@@ -36,7 +37,8 @@ def delete_by_id(id):
     run_sql(sql, values)
 
 def update_owner(owner):
-    sql = "UPDATE owners SET (first_name, last_name, dob, address, tel_number, email, img) VALUES (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE owners SET (first_name, last_name, dob, address, tel_number, email, img) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    print("sdfsdg!!!!!", owner.id)
     values = [owner.first_name, owner.last_name, owner.dob, owner.address, owner.phone_number, owner.email, owner.img, owner.id]
     run_sql(sql, values)
 

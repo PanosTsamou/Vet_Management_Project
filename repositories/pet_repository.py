@@ -46,6 +46,17 @@ def find_pet_by_owner_id(owner_id):
         pet = Pet(row['name'], row['dob'], row['weight'], row['sex'], row['species'], row['breed'], row['img'], row['treatment'], row['chipped'], row['chip_number'], owner, veterian, row['id'] )
         pets.append(pet)
     return pets
+def find_pet_by_veterian_id(veterian_id):
+    pets = []
+    sql = "SELECT * FROM pets WHERE veterian_id= %s"
+    values=[veterian_id]
+    results = run_sql(sql,values)
+    for row in results:
+        owner= owner_repo.find_owner_by_id(row['owner_id'])
+        veterian =  vet_repo.find_veterian_by_id(row['veterian_id'])
+        pet = Pet(row['name'], row['dob'], row['weight'], row['sex'], row['species'], row['breed'], row['img'], row['treatment'], row['chipped'], row['chip_number'], owner, veterian, row['id'] )
+        pets.append(pet)
+    return pets
 
 def delete_all():
     sql = "DELETE  FROM pets"

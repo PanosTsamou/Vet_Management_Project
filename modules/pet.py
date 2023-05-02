@@ -20,7 +20,7 @@ class Pet:
         
     def change_chip_status(self):
         self.chipped = True
-        self.chip_number = f'{self.owner.initials()}{self.id}{randint(0,9)}{randint(0,9)}{randint(0,9)}'
+        self.chip_number = f'{self.owner.initials()}{self.id}'
     
     def add_treatment(self, treatment):
         self.treatment = treatment

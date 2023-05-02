@@ -1,0 +1,18 @@
+{% extends "base.jinja" %}
+{% block content %}
+    <form action="/vets/{{veterian.id}}" method="post">
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name" value="{{veterian.first_name}}">
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name" value="{{veterian.last_name}}">
+        <label for="dob">DOB</label>
+        <input type="text" name="dob" id="dob" value="{{veterian.dob}}">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address" value="{{veterian.address}}">
+        <label for="phone_number">Phone Number</label>
+        <input type="text" name="phone_number" id="phone_number" value="{{veterian.phone_number}}">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{{veterian.email}}">
+        <input type="submit" value="Submit">
+    </form>
+{% endblock content %} 

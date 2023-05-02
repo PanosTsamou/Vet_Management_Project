@@ -17,6 +17,7 @@ def all_vets():
     return vets
 
 def find_veterian_by_id(id):
+    veterian = None
     sql = "SELECT * FROM vets WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)

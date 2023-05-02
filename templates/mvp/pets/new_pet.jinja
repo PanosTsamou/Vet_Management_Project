@@ -1,34 +1,36 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-    <form action="/pets" method="post">
-        <label for="name">Pet Name</label>
-        <input type="text" name="name" id="name" placeholder="name">
-        <label for="dob">DOB</label>
-        <input type="text" name="dob" id="dob" >
-        <label for="species">Species</label>
-        <input type="text" name="species" id="species" placeholder="dog,cat,et.">
-        <label for="sex">Sex</label>
-        <input type="text" name="sex" id="sex" placeholder="male,female">
-        <label for="weight">Weight</label>
-        <input type="text" name="weight" id="weight" placeholder="it a number">
-        <label for="chipped">Has Chip</label>
-        <select id="chipped" name="chipped">
-            <option value="True"> Yes </option>
-            <option value="False"> No </option>
-        </select>
-        <label for="veterian">Pet's Veterian</label>
-        <select id="veterian" name="veterian">
-            {% for vet in vets %}
-                  <option value={{vet.id}}> {{vet.full_name()}} </option>
-            {% endfor %}
-        </select>
-        <label for="owner">Pet's Owner</label>
-        <select id="owner" name="owner">
-            {% for owner in owners %}
-                  <option value={{owner.id}}> {{owner.full_name()}} </option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="new-pet">
+        <form action="/pets" method="post">
+            <label for="name">Pet Name</label>
+            <input type="text" name="name" id="name" placeholder="name">
+            <label for="dob">DOB</label>
+            <input type="text" name="dob" id="dob" >
+            <label for="species">Species</label>
+            <input type="text" name="species" id="species" placeholder="dog,cat,et.">
+            <label for="sex">Sex</label>
+            <input type="text" name="sex" id="sex" placeholder="male,female">
+            <label for="weight">Weight</label>
+            <input type="text" name="weight" id="weight" placeholder="it a number">
+            <label for="chipped">Has Chip</label>
+            <select id="chipped" name="chipped">
+                <option value="True"> Yes </option>
+                <option value="False"> No </option>
+            </select>
+            <label for="veterian">Pet's Veterian</label>
+            <select id="veterian" name="veterian">
+                {% for vet in vets %}
+                    <option value={{vet.id}}> {{vet.full_name()}} </option>
+                {% endfor %}
+            </select>
+            <label for="owner">Pet's Owner</label>
+            <select id="owner" name="owner">
+                {% for owner in owners %}
+                    <option value={{owner.id}}> {{owner.full_name()}} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 {% endblock content %}

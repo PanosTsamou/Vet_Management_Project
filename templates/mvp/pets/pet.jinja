@@ -4,40 +4,42 @@
 {% endblock aside %}
 
 {% block content %}
-    <section>
-        <div></div>
-            <h2>{{pet.name}}</h2>
-            <h4>DOB: {{pet.dob}}</h4>
-            <h4>Species: {{pet.species}}</h4>
-            <h4>Sex: {{pet.sex}}</h4>
-            {% if pet.chipped  %}
-            <h4>Chip Number: {{pet.chip_number}}</h4>
-            {% else %}
-            <h4> Not Chipped </h4>
-            {% endif %}
-            <h4>Weight: {{pet.weight}}</h4>
-            <h4>Pet's Veterian: <a href="/vets/{{pet.veterian.id}}">{{pet.veterian.full_name()}}</a></h4>
-            <form action="/pets/{{pet.id}}/delete" method="post">
-                <input type="submit" value="Delete"/>
-            </form>
-            <form action="/pets/{{pet.id}}/edit" method="post">
-                <input type="submit" value="Edit"/>
-            </form>
+    <div class="single-pet">
+        <section class="pet-plus-img">
+            <div class="pet-info">
+                <h2>{{pet.name}}</h2>
+                <h4>DOB: {{pet.dob}}</h4>
+                <h4>Species: {{pet.species}}</h4>
+                <h4>Sex: {{pet.sex}}</h4>
+                {% if pet.chipped  %}
+                <h4>Chip Number: {{pet.chip_number}}</h4>
+                {% else %}
+                <h4> Not Chipped </h4>
+                {% endif %}
+                <h4>Weight: {{pet.weight}}</h4>
+                <h4>Pet's Veterian: <a href="/vets/{{pet.veterian.id}}">{{pet.veterian.full_name()}}</a></h4>
+                <form action="/pets/{{pet.id}}/delete" method="post">
+                    <input type="submit" value="Delete"/>
+                </form>
+                <form action="/pets/{{pet.id}}/edit" method="post">
+                    <input type="submit" value="Edit"/>
+                </form>
+            </div>
+            <img src="{{pet.img}}">
+        </section>
+        <section class="owner-plus-img">
+            <div>
+                <a href="/owners/{{pet.owner.id}}"><h2>{{pet.owner.full_name()}}</h2></a>
+                <h4>DOB: {{pet.owner.dob}}</h4>
+                <h4>Address: {{pet.owner.address}}</h4>
+                <h4>Phone: {{pet.owner.phone_number}}</h4>
+                <h4>Email: {{pet.owner.email}}</h4>
+            </div>
+            <img src="{{pet.owner.img}}">
+        </section>
+        <div class="treatment">
+            <h2>Treatment</h2>
+            <p>{{pet.treatment}}</p>
         </div>
-        <img src="{{pet.img}}">
-    </section>
-    <section>
-        <div>
-            <h2><a href="/owners/{{pet.owner.id}}">{{pet.owner.full_name()}}</a></h2>
-            <h4>DOB: {{pet.owner.dob}}</h4>
-            <h4>Address: {{pet.owner.address}}</h4>
-            <h4>Phone: {{pet.owner.phone_number}}</h4>
-            <h4>Email: {{pet.owner.email}}</h4>
-        </div>
-        <img src="{{pet.owner.img}}">
-    </section>
-    <div>
-    <h2>Treatment</h2>
-    <p>{{pet.treatment}}</p>
     </div>
 {% endblock content %}

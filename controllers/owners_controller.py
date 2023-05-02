@@ -36,3 +36,19 @@ def update_owner_details(id):
     owner.add_id(id)
     owner_repo.update_owner(owner)
     return redirect('/owners')
+
+@owners_blueprint.route("/owners/new-owner")
+def new_owner_form():
+    return render_template("mvp/owners/new_owner.jinja")
+
+@owners_blueprint.route("/owners", methods=["POST"])
+def create_owner():
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    dob = request.form['dob']
+    address = request.form['address']
+    phone_number = request.form['phone_number']
+    email = request.form['email']
+    owner = Owner(first_name, last_name, dob, address, email, phone_number)
+    owner_repo.add_owner(owner)
+    return redirect('/owners')

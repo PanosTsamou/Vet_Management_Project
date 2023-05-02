@@ -4,22 +4,26 @@
 {% endblock aside %}
 
 {% block content %}
+    <div class= "container row">
 
-
-    {% for pet in all_pets_to_display %}
-        <a href="/pets/{{pet.id}}">
-            <div>
-                
-                <h2>Name: {{pet.name}}</h2>
-                <h2>Spicies: {{pet.species}}</h2>
-                <h2>Sex: {{pet.sex}}</h2>
-                <h2>Chip: {{pet.chip_number}}</h2>
-                <h2>Owner: {{pet.owner.full_name()}}</h2>
-            </div>
-            <form action="/pets/{{pet.id}}/delete" method="post">
-                <input type="submit" value="Delete"/>
-            </form>
-        </a>
-    {% endfor %}
-
+        {% for pet in all_pets_to_display %}
+            
+            <a href="/pets/{{pet.id}}">
+                <div class="pets-display">
+                    <div class="pets-info-display">
+                        
+                        <h2>Name: {{pet.name}}</h2>
+                        <h2>Spicies: {{pet.species}}</h2>
+                        <h2>Sex: {{pet.sex}}</h2>
+                        <h2>Chip: {{pet.chip_number}}</h2>
+                        <h2>Owner: {{pet.owner.full_name()}}</h2>
+                    </div>
+                    <form class="button" action="/pets/{{pet.id}}/delete" method="post">
+                        <button class="delete-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </a>
+            
+        {% endfor %}
+    </div>
 {% endblock content %}

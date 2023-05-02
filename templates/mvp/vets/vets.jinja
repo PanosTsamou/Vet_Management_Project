@@ -1,0 +1,17 @@
+{% extends "base.jinja" %}
+{% block aside %}
+    <a href="/vets/new-veterian"><h2>Add a New Veterian</h2></a>
+{% endblock aside %}
+
+{% block content %}
+
+    <ul>
+    {% for veterian in display_vets %}
+        <li>
+            <a href="/vets/{{veterian.id}}">
+                    <h2>Name: {{veterian.full_name()}}</h2>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

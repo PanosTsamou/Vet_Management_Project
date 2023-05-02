@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, url_for
 from flask import Blueprint
 from modules.pet import Pet
 import repositories.pet_repository as pet_repo
@@ -16,8 +16,14 @@ def all_pets():
 
 @pets_blueprint.route('/pets/<id>/delete',  methods = ["POST"])
 def delete_pet(id):
+
     pet_repo.delete_by_id(int(id))
-    return redirect('/pets')
+    if 'owner_page' in request.form:
+        return  redirect( url_for('owners.owner_info', id= request.form['id']))
+    elif 'veterian_page' in request.form:
+        return  redirect( url_for('vets.veterian_info', id= request.form['id']))
+    else:
+        return redirect('/pets')
     
 @pets_blueprint.route("/pets/<id>")
 def pet_display(id):

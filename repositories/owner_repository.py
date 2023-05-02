@@ -42,3 +42,4 @@ def update_owner(owner):
     values = [owner.first_name, owner.last_name, owner.dob, owner.address, owner.phone_number, owner.email, owner.img, owner.id]
     run_sql(sql, values)
 
+

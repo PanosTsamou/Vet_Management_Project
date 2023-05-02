@@ -1,27 +1,27 @@
 {% extends "base.jinja" %}
 {% block aside %}
-    <a href="/owners/new-owner"><h2>Add a New Customer</h2></a>
+    <a href="/vets/new-veterian"><h2>Add a New Veterian</h2></a>
 {% endblock aside %}
 
 {% block content %}
     <section>
         <div>
-            <h2>{{owner.full_name()}}</h2>
-            <h4>DOB: {{owner.dob}}</h4>
-            <h4>Address: {{owner.address}}</h4>
-            <h4>Email: {{owner.email}}</h4>
-            <h4>Phone: {{owner.phone_number}}</h4>
-            <form action="/owners/{{owner.id}}/delete" method="post">
+            <h2>{{veterian.full_name()}}</h2>
+            <h4>DOB: {{veterian.dob}}</h4>
+            <h4>Address: {{veterian.address}}</h4>
+            <h4>Email: {{veterian.email}}</h4>
+            <h4>Phone: {{veterian.phone_number}}</h4>
+            <form action="/vets/{{veterian.id}}/delete" method="post">
                 <input type="submit" value="Delete"/>
             </form>
-            <form action="/owners/{{owner.id}}/edit" method="post">
+            <form action="/vets/{{veterian.id}}/edit" method="post">
                 <input type="submit" value="Edit"/>
             </form>
         </div>
-        <img src="{{owner.img}}">
+        <img src="{{veterian.img}}">
     </section>
     <section>
-        <h2> All my Pets</h2>
+        <h2>Pets Under my Care</h2>
         <div>
             {% for pet in list_of_pets %}
                 <a href="/pets/{{pet.id}}">
@@ -32,8 +32,8 @@
                         <h4>Chip: {{pet.chip_number}}</h4>
                     </div>
                     <form action="/pets/{{pet.id}}/delete" method="post">
-                        <input type="hidden" value="{{owner.id}}" name="id"/>
-                        <input name="owner_page" type="submit" value="Delete"/>
+                        <input type="hidden" value="{{veterian.id}}" name="id"/>
+                        <input name="veterian_page" type="submit" value="Delete"/>
                     </form>
                 </a>
             {% endfor %}

@@ -1,6 +1,8 @@
 {% extends "base.jinja" %}
 {% block aside %}
-    <a href="/pets/new-pet"><h2>Add a New Pet</h2></a>
+    <aside>
+        <a href="/pets/new-pet"><h2>Add a New Pet</h2></a>
+    </aside>
 {% endblock aside %}
 
 {% block content %}
@@ -17,7 +19,7 @@
                 <h4> Not Chipped </h4>
                 {% endif %}
                 <h4>Weight: {{pet.weight}}</h4>
-                <h4>Pet's Veterian: <a href="/vets/{{pet.veterian.id}}">{{pet.veterian.full_name()}}</a></h4>
+                <h4>Pet's Veterian: <a href="/vets/{{veterian.id}}">{{veterian.full_name()}}</a></h4>
                 <form action="/pets/{{pet.id}}/delete" method="post">
                     <input type="submit" value="Delete"/>
                 </form>
@@ -25,7 +27,7 @@
                     <input type="submit" value="Edit"/>
                 </form>
             </div>
-            <img src="{{pet.img}}">
+            <img src="{{ url_for('static', filename='no_img.png') }}" width="150" height="200">
         </section>
         <section class="owner-plus-img">
             <div>
@@ -35,7 +37,7 @@
                 <h4>Phone: {{pet.owner.phone_number}}</h4>
                 <h4>Email: {{pet.owner.email}}</h4>
             </div>
-            <img src="{{pet.owner.img}}">
+            <img src="{{ url_for('static', filename='no_img.png') }}"  width="150" height="200">
         </section>
         <div class="treatment">
             <h2>Treatment</h2>

@@ -47,7 +47,7 @@ header nav ul li a{
     color: white;
     font-size: 18px;
 }
-header nav ul li a :hover{
+header nav ul li a:hover{
     text-decoration:  underline;
     
 }
@@ -88,12 +88,12 @@ main{
   }
   .pet-plus-img{
     display: flex;
-    justify-content: center;
+    justify-content:flex-start;
     grid-area: petinfo;
   }
   .owner-plus-img{
     display: flex;
-    justify-content: center;
+    justify-content: flex-wrap;
     grid-area: ownerinfo;
   }
   .treatment{
@@ -108,7 +108,7 @@ main{
   .new-pet{
     display: flex;
     flex-direction: column;
-    fle
+    justify-content: center;
     flex-wrap: wrap;
   }
   

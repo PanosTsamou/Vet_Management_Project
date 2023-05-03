@@ -10,13 +10,10 @@ class Person:
         self.img = input_img
 
     def full_name(self):
-        return (f"{self.first_name} {self.last_name}").capitalize()
+        first = self.first_name.capitalize()
+        last = self.last_name.capitalize()
+        return f"{first} {last}"
 
     def initials(self):
         return (f"{self.first_name[0]}{self.last_name[0]}").upper()
 
-    def username_password_verification(self, username, password):
-        if username == self.user_name and password == self.password:
-            return True
-        else:
-            return False

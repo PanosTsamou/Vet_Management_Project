@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS appointments;
+DROP TABLE IF EXISTS care;
 DROP TABLE IF EXISTS specializations;
 DROP TABLE IF EXISTS owners_users;
 DROP TABLE IF EXISTS vets_users;
@@ -74,11 +75,14 @@ CREATE TABLE pets(
     chip_number VARCHAR(255),
     -- species_id INT NOT NULL REFERENCES species(id),
     -- breed_id INT NOT NULL REFERENCES breeds(id),
-    owner_id INT NOT NULL REFERENCES owners(id),
-    veterian_id INT NOT NULL REFERENCES vets(id)
+    owner_id INT NOT NULL REFERENCES owners(id) ON DELETE CASCADE
 );
 
-
+CREATE TABLE care(
+    id SERIAL PRIMARY KEY,
+    pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
+    veterian_id INT NOT NULL REFERENCES vets(id) ON DELETE CASCADE
+);
 
 CREATE TABLE appointments(
     id SERIAL PRIMARY KEY,

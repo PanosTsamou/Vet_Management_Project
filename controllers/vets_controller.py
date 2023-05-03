@@ -4,6 +4,7 @@ from modules.vet import Veterian
 
 import repositories.veterian_repository as vet_repo
 import repositories.pet_repository as pet_repo
+import repositories.care_repository as care_repo
 
 vets_blueprint = Blueprint("vets", __name__)
 
@@ -13,11 +14,11 @@ def all_vets():
 
 @vets_blueprint.route('/vets/<id>')
 def veterian_info(id):
-    return render_template('mvp/vets/veterian.jinja', veterian = vet_repo.find_veterian_by_id(int(id)), list_of_pets = pet_repo.find_pet_by_veterian_id(int(id)))
+    return render_template('mvp/vets/veterian.jinja', veterian = vet_repo.find_veterian_by_id(int(id)), list_of_pets = care_repo.find_pets_by_vet(int(id)))
 
 @vets_blueprint.route('/vets/<id>/delete', methods= ["POST"])
 def delete_veterian(id):
-    vet_repo.delete_by_id(id)
+    vet_repo.delete_by_id(int(id))
     return redirect('/vets')
 
 @vets_blueprint.route('/vets/<id>/edit', methods = ["POST"])

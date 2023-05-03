@@ -11,7 +11,7 @@
 <body>
   <header>
     <div>
-      <img src="https://www.nicepng.com/downpng/u2q8w7w7i1e6o0o0_blossom-sea-turtle-sick-sick-turtle-png/" alt="Injured Turtle logo" >
+      <img src="{{ url_for('static', filename='sick_turtle.jpg') }}" alt="Injured Turtle logo"  width="100" height="100">
       <h1> Injured Turtle Veterinary Clinic</h1>
     </div>
     <nav>
@@ -24,11 +24,11 @@
     </nav>
   </header>
   <main>
-    <aside>
+    
       {% block aside %}
   
       {% endblock aside %}
-    </aside>
+ 
     <div >
       {% block content %}
       {% endblock %}

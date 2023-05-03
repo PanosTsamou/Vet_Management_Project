@@ -17,7 +17,7 @@ def owner_info(id):
 
 @owners_blueprint.route('/owners/<id>/delete', methods= ["POST"])
 def delete_owner(id):
-    owner_repo.delete_by_id(id)
+    owner_repo.delete_by_id(int(id))
     return redirect('/owners')
 
 @owners_blueprint.route('/owners/<id>/edit', methods = ["POST"])

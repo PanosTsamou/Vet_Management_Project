@@ -4,6 +4,7 @@ from modules.pet import Pet
 import repositories.pet_repository as pet_repo
 import repositories.owner_repository as owner_repo
 import repositories.veterian_repository as vet_repo
+import repositories.care_repository as care_repo
 
 
 pets_blueprint = Blueprint("pets", __name__)
@@ -11,7 +12,6 @@ pets_blueprint = Blueprint("pets", __name__)
 @pets_blueprint.route('/pets')
 def all_pets():
     all_pets_to_display = pet_repo.all_pets()
-    print("pets!!!", all_pets_to_display)
     return render_template("mvp/pets/pets.jinja", all_pets_to_display = all_pets_to_display)
 
 @pets_blueprint.route('/pets/<id>/delete',  methods = ["POST"])
@@ -28,7 +28,7 @@ def delete_pet(id):
 @pets_blueprint.route("/pets/<id>")
 def pet_display(id):
     pet= pet_repo.find_pet_by_id(int(id))
-    return render_template("mvp/pets/pet.jinja", pet = pet)
+    return render_template("mvp/pets/pet.jinja", pet = pet, veterian = care_repo.find_vet_by_pet_id(int(id)))
 
 @pets_blueprint.route("/pets/<id>/edit", methods=["POST"])
 def delete_edit(id):

@@ -2,11 +2,19 @@
 body{
     font-family: "Helvetica", arial, sans-serif; font-size: 16px;
     background-color: #f4edea;
+    padding: 0;
+    margin: 0;
 }
-
+html{
+  padding: 0;
+  margin: 0;
+}
 header {
     display: flex;
     flex-direction: column;
+}
+a:hover{
+  font-size: 17px;
 }
 ul li{ 
     
@@ -24,12 +32,14 @@ a {
 header div{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     background-color: #0A3200;
     margin: 0;
-    height: 5rem;
+    height: 7rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1rem;
     color: aliceblue;
+    gap: 20px;
 }
 header nav{
     background-color: #70A288;
@@ -53,63 +63,110 @@ header nav ul li a:hover{
 }
 
 main{
-    display: grid;
-    grid-template-columns: 25% 75%;
-    margin-left: 20;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  margin-left: 20;
+}
+.main-form{
+  
+  display: flex ;
+  justify-content: center;
+  
+}
+.new-form{
+  display: flex ;
+  justify-content: center;
+}
+.new-display-form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .container {
-    display: grid;
-    justify-content: center;
-    gap: 10px;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  align-items: stretch;
   }
   
-  .row {
-    grid-template-columns: 25% 25% 25%;
-  }
+.row {
+  grid-template-columns: 25% 25% 25%;
+}
+.people-pet-display{
+  /* width: 500px; */
+  display: flex;
+}
+.people-display{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap:  25px;
+}
+.people-img{
+  display: flex;
+  
+}
+.delete-edit{
+  display: flex;
+  justify-content: space-between;
+}
 
-  .pets-display{
-    background-color: #6d545d;
-    border: solid ;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin: 15px;
-  }
-  .pets-info-display{
-        font-size: 10px;
-        align-items: center;
-        color: aliceblue;
-  }
-  .button{
-    align-items:  stretch;
-    background-color: #6d545d;
 
-  }
-  .pet-plus-img{
-    display: flex;
-    justify-content:flex-start;
-    grid-area: petinfo;
-  }
-  .owner-plus-img{
-    display: flex;
-    justify-content: flex-wrap;
-    grid-area: ownerinfo;
-  }
-  .treatment{
-    grid-area: treatment;
-  }
-  .single-pet{
-    display: grid;
-    grid-template-areas: "petinfo ownerinfo" "treatment treatment" "treatment treatment";
+.pets-display{
+  background-color: #6d545d;
+  border: solid ;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 15px;
+}
+.pets-info-display{
+      font-size: 10px;
+      align-items: center;
+      color: aliceblue;
+}
+.button{
+  align-items:  stretch;
+  background-color: #6d545d;
 
-  }
+}
+.buttons {
+  margin-top: 10px;
+  margin-left: 2px;
+  font-size: 1.4em;
+  color: #aab8c2;
+}
+.buttons i {
+  width: 80px;
+}
+.trash-button{
+  display: contents;
+  font-size: 65%;
+}
+.pet-plus-img{
+  display: flex;
+  justify-content:flex-start;
+  grid-area: petinfo;
+}
+.owner-plus-img{
+  display: flex;
+  justify-content: flex-wrap;
+  grid-area: ownerinfo;
+}
+.treatment{
+  grid-area: treatment;
+}
+.list-of-people li{
+  list-style:square;
+  color: #0A3200;
+}
+.single-pet{
+  display: grid;
+  grid-template-areas: "petinfo ownerinfo" "treatment treatment" "treatment treatment";
 
-  .new-pet{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+}
+
   
 

@@ -4,9 +4,8 @@
 {% endblock aside %}
 
 {% block content %}
-    <div></div>
         <h2>All owners</h2>
-        <ul>
+        <ul class="list-of-people">
             {% for owner in display_owners %}
                 <li>
                     <a href="/owners/{{owner.id}}">

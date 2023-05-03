@@ -4,39 +4,48 @@
 {% endblock aside %}
 
 {% block content %}
-    <section>
-        <div>
-            <h2>{{veterian.full_name()}}</h2>
-            <h4>DOB: {{veterian.dob}}</h4>
-            <h4>Address: {{veterian.address}}</h4>
-            <h4>Email: {{veterian.email}}</h4>
-            <h4>Phone: {{veterian.phone_number}}</h4>
-            <form action="/vets/{{veterian.id}}/delete" method="post">
-                <input type="submit" value="Delete"/>
-            </form>
-            <form action="/vets/{{veterian.id}}/edit" method="post">
-                <input type="submit" value="Edit"/>
-            </form>
-        </div>
-        <img src="{{veterian.img}}">
-    </section>
-    <section>
-        <h2>Pets Under my Care</h2>
-        <div>
-            {% for pet in list_of_pets %}
-                <a href="/pets/{{pet.id}}">
-                    <div>
-                        <h4>Name: {{pet.name}}</h4>
-                        <h4>Spicies: {{pet.species}}</h4>
-                        <h4>Sex: {{pet.sex}}</h4>
-                        <h4>Chip: {{pet.chip_number}}</h4>
-                    </div>
-                    <form action="/pets/{{pet.id}}/delete" method="post">
-                        <input type="hidden" value="{{veterian.id}}" name="id"/>
-                        <input name="veterian_page" type="submit" value="Delete"/>
+    <div class="people-display">
+        <section class="people-img">
+            <div>
+                <h2>{{veterian.full_name()}}</h2>
+                <h4>DOB: {{veterian.dob}}</h4>
+                <h4>Address: {{veterian.address}}</h4>
+                <h4>Email: {{veterian.email}}</h4>
+                <h4>Phone: {{veterian.phone_number}}</h4>
+                <div class="delete-edit">
+                    <form action="/vets/{{veterian.id}}/delete" method="post">
+                        <button class="delete-button" ><i class="fa fa-trash-o fa-3x" style="color:red;"> </i></button>
+                        {# <input type="submit" value="Delete"/> #}
                     </form>
-                </a>
-            {% endfor %}
-        </div>
-    </section>
+                    <form action="/vets/{{veterian.id}}/edit" method="post">
+                            <button class="edit"><i class="fa fa-pencil-square-o fa-3x" style="color:rgb(112, 167, 29)"></i></button>
+                        {# <input type="submit" value="Edit"/> #}
+                    </form>
+                </div>
+            </div>
+            <img src="{{ url_for('static', filename='no_img.png') }}" width="150" height="200">
+        </section>
+        <section>
+            <h2>Pets Under my Care</h2>
+            <div class = "people-pet-display">
+                {% for pet in list_of_pets %}
+                    <a href="/pets/{{pet.id}}">
+                        <div class="pets-display">
+                            <div class="pets-info-display">
+                                <h4>Name: {{pet.name}}</h4>
+                                <h4>Spicies: {{pet.species}}</h4>
+                                <h4>Sex: {{pet.sex}}</h4>
+                                <h4>Chip: {{pet.chip_number}}</h4>
+                            </div>
+                            <form action="/pets/{{pet.id}}/delete" method="post">
+                                {# <input type="hidden" value="{{veterian.id}}" name="id"/>
+                                <input name="veterian_page" type="submit" value="Delete"/> #}
+                                    <button class="delete-button" name="veterian_page" value="{{veterian.id}}"><i class="fa fa-trash-o fa-3x" style="color:red" > </i></button>
+                            </form>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
 {% endblock content %}

@@ -29,7 +29,7 @@ def find_pet_by_id(id):
     result = run_sql(sql,values)[0]
     if result:
         owner= owner_repo.find_owner_by_id(result['owner_id'])
-        pet = Pet(result['name'], result['dob'], result['weight'], result['sex'], result['species'], result['breed'], result['img'], result['treatment'], result['chipped'], result['chip_number'], owner, result['id'] )
+        pet = Pet(result['name'], result['dob'], result['weight'], result['sex'], result['species'], result['breed'], result['treatment'], result['img'], result['chipped'], result['chip_number'], owner, result['id'] )
         
     return pet
 
@@ -66,7 +66,8 @@ def delete_by_id(id):
     run_sql(sql, values)
 
 def update_pets(pet):
-    sql = "UPDATE pets SET (name, dob, weight, sex, species, breed, img, treatment, chipped, chip_number,  owner_id = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE pets SET (name, dob, weight, sex, species, breed, img, treatment, chipped, chip_number,  owner_id) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [pet.name, pet.dob, pet.weight, pet.sex, pet.species, pet.breed, pet.img, pet.treatment, pet.chipped, pet.chip_number,pet.owner.id, pet.id]
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!", values)
     run_sql(sql, values)
 

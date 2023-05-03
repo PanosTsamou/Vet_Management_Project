@@ -4,14 +4,14 @@
 {% endblock aside %}
 
 {% block content %}
-
-    <ul>
-    {% for veterian in display_vets %}
-        <li>
-            <a href="/vets/{{veterian.id}}">
-                    <h2>Name: {{veterian.full_name()}}</h2>
-            </a>
-        </li>
-    {% endfor %}
+    <h2>All Vets</h2>
+    <ul class="list-of-people">
+        {% for veterian in display_vets %}
+            <li>
+                <a href="/vets/{{veterian.id}}">
+                        <h2>{{veterian.full_name()}}</h2>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 {% endblock content %}

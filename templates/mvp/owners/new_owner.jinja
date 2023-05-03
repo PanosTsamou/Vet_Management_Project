@@ -1,7 +1,7 @@
-{% extends "base.jinja" %}
+{% extends "base-form.jinja" %}
 
 {% block content %}
-    <form action="/owners" method="post">
+    <form class="new-display-form" action="/owners" method="post">
         <label for="first_name">First Name</label>
         <input type="text" name="first_name" id="first_name" placeholder="first name">
         <label for="last_name">Last Name</label>

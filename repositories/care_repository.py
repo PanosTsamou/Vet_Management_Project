@@ -30,6 +30,7 @@ def find_care_by_id(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result:
+        result = result[0]
         pet = pet_repo.find_pet_by_id(result['pet_id'])
         veterian = vet_repo.find_veterian_by_id(result['veterian_id'])
         care = Care(pet, veterian, result['id'])
@@ -52,11 +53,23 @@ def find_vet_by_pet_id(pet_id):
     veterian = None
     sql = "SELECT vets.* FROM vets INNER JOIN care ON care.veterian_id = vets.id WHERE pet_id = %s"
     values = [pet_id]
-    result = run_sql(sql, values)[0]
+    result = run_sql(sql, values)
     if result:
+        result = result[0]
         veterian = Veterian(result['first_name'], result['last_name'], result['dob'], result['address'], result['email'], result['tel_number'])
         veterian.add_id(result['id'])
     return veterian
+def find_care_by_pet_id(pet_id):
+    care = None
+    sql = "SELECT * FROM care  WHERE pet_id = %s"
+    values = [pet_id]
+    result = run_sql(sql, values)
+    if result:
+        result = result[0]
+        pet = pet_repo.find_pet_by_id(result['pet_id'])
+        veterian = vet_repo.find_veterian_by_id(result['veterian_id'])
+        care = Care(pet, veterian, result['id'])
+    return care
 
 def delete_all():
     sql = "DELETE FROM care"
@@ -68,6 +81,6 @@ def delete_by_id(id):
     run_sql(sql, values)
 
 def update(care):
-    sql = "UPDATE care SET( pet_id, veterian_id ) = ( %s, %s)"
-    values = [care.pet.id, care.veterian.id]
+    sql = "UPDATE care SET (pet_id, veterian_id ) = ( %s, %s) WHERE id = %s"
+    values = [care.pet.id, care.veterian.id, care.id]
     run_sql(sql, values)

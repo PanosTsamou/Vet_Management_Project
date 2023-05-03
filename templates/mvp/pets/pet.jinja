@@ -12,6 +12,7 @@
                 <h2>{{pet.name}}</h2>
                 <h4>DOB: {{pet.dob}}</h4>
                 <h4>Species: {{pet.species}}</h4>
+                <h4>Breed: {{pet.breed}}</h4>
                 <h4>Sex: {{pet.sex}}</h4>
                 {% if pet.chipped  %}
                 <h4>Chip Number: {{pet.chip_number}}</h4>
@@ -20,12 +21,16 @@
                 {% endif %}
                 <h4>Weight: {{pet.weight}}</h4>
                 <h4>Pet's Veterian: <a href="/vets/{{veterian.id}}">{{veterian.full_name()}}</a></h4>
-                <form action="/pets/{{pet.id}}/delete" method="post">
-                    <input type="submit" value="Delete"/>
-                </form>
-                <form action="/pets/{{pet.id}}/edit" method="post">
-                    <input type="submit" value="Edit"/>
-                </form>
+                <div class="delete-edit">
+                    <form action="/pets/{{pet.id}}/delete" method="post">
+                        <button class="delete-button" ><i class="fa fa-trash-o fa-3x" style="color:red;"> </i></button>
+                        {# <input type="submit" value="Delete"/> #}
+                    </form>
+                    <form action="/pets/{{pet.id}}/edit" method="post">
+                            <button class="edit"><i class="fa fa-pencil-square-o fa-3x" style="color:rgb(112, 167, 29)"></i></button>
+                        {# <input type="submit" value="Edit"/> #}
+                    </form>
+                </div>
             </div>
             <img src="{{ url_for('static', filename='no_img.png') }}" width="150" height="200">
         </section>

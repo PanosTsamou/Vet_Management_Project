@@ -1,14 +1,16 @@
-{% extends "base.jinja" %}
+{% extends "base-form.jinja" %}
 
 {% block content %}
-    <div class="new-pet">
-        <form class = "new-pet" action="/pets" method="post">
+   
+        <form class= "new-display-form" action="/pets" method="post">
             <label for="name">Pet Name</label>
             <input type="text" name="name" id="name" placeholder="name">
             <label for="dob">DOB</label>
             <input type="text" name="dob" id="dob" >
             <label for="species">Species</label>
             <input type="text" name="species" id="species" placeholder="dog,cat,et.">
+            <label for="breed">Breed</label>
+            <input type="text" name="breed" id="breed" >
             <label for="sex">Sex</label>
             <input type="text" name="sex" id="sex" placeholder="male,female">
             <label for="weight">Weight</label>
@@ -32,5 +34,5 @@
             </select>
             <input type="submit" value="Submit">
         </form>
-    </div>
+    
 {% endblock content %}

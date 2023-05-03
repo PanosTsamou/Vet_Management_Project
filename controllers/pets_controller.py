@@ -17,12 +17,12 @@ def all_pets():
 
 @pets_blueprint.route('/pets/<id>/delete',  methods = ["POST"])
 def delete_pet(id):
-
+    
     pet_repo.delete_by_id(int(id))
     if 'owner_page' in request.form:
-        return  redirect( url_for('owners.owner_info', id= request.form['id']))
+        return  redirect( url_for('owners.owner_info', id= request.form['owner_page']))
     elif 'veterian_page' in request.form:
-        return  redirect( url_for('vets.veterian_info', id= request.form['id']))
+        return  redirect( url_for('vets.veterian_info', id= request.form['iveterian_page']))
     else:
         return redirect('/pets')
     
@@ -40,17 +40,20 @@ def pet_edit(id):
     name = request.form['name']
     dob = request.form['dob']
     species = request.form['species']
+    breed = request.form['breed']
     sex = request.form['sex']
     weight = int(request.form['weight'])
     chipped = request.form['chipped']
+    treatment = request.form['treatment']
     veterian = vet_repo.find_veterian_by_id(request.form['veterian'])
     owner = owner_repo.find_owner_by_id(request.form['owner'])
-    pet = Pet(name,dob,weight,sex,species)
+    pet = Pet(name,dob,weight,sex,species,breed, treatment)
     pet.add_owner(owner)
     pet.add_id(id)
     if chipped == "True":
         pet.change_chip_status()
     pet_repo.update_pets(pet)
+    care = care_repo.find_care_by_pet_id(int(id))
     care = Care(pet,veterian)
     care_repo.update(care)
     return redirect('/pets')
@@ -64,12 +67,13 @@ def add_new_pet():
     name = request.form['name']
     dob = request.form['dob']
     species = request.form['species']
+    breed = request.form['breed']
     sex = request.form['sex']
     weight = int(request.form['weight'])
     chipped = request.form['chipped']
     veterian = vet_repo.find_veterian_by_id(request.form['veterian'])
     owner = owner_repo.find_owner_by_id(request.form['owner'])
-    pet = Pet(name,dob,weight,sex,species)
+    pet = Pet(name,dob,weight,sex,species,breed)
     pet.add_owner(owner)
     pet_repo.add_pet(pet)
     if chipped == "True":

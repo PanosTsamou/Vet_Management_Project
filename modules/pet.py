@@ -1,7 +1,7 @@
 from random import randint
 class Pet:
 
-    def __init__(self, input_name, input_dob, input_weight, input_sex, input_species = None, input_breed = None, input_pet_img = None, input_treatment = None, input_chipped = False, input_chip_number = None, input_owner = None, input_id = None):
+    def __init__(self, input_name, input_dob, input_weight, input_sex, input_species = None, input_breed = None, input_treatment = None, input_pet_img = None, input_chipped = False, input_chip_number = None, input_owner = None, input_id = None):
         self.name = input_name
         self.dob = input_dob
         self.weight = input_weight

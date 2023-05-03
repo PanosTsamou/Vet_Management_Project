@@ -19,7 +19,7 @@
         <label for="veterian">Pet's Veterian</label>
         <select id="veterian" name="veterian">
             {% for vet in vets %}
-                  <option value={{vet.id}} {% if pet.veterian.id == vet.id %} selected="selected" {% endif %}> {{vet.full_name()}} </option>
+                  <option value={{vet.id}} {% if pet_veterian.id == vet.id %} selected="selected" {% endif %}> {{vet.full_name()}} </option>
             {% endfor %}
         </select>
         <label for="owner">Pet's Owner</label>

@@ -54,7 +54,7 @@ def pet_edit(id):
         pet.change_chip_status()
     pet_repo.update_pets(pet)
     care = care_repo.find_care_by_pet_id(int(id))
-    care = Care(pet,veterian)
+    care = Care(pet,veterian,care.id)
     care_repo.update(care)
     return redirect(f'/pets/{pet.id}')
 
@@ -78,7 +78,7 @@ def add_new_pet():
     pet_repo.add_pet(pet)
     if chipped == "True":
         pet.change_chip_status()
-    pet_repo.add_pet(pet)
+    pet_repo.update_pets(pet)
     care = Care(pet, veterian)
     care_repo.add_care(care)
     return redirect("/pets")

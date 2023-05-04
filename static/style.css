@@ -105,6 +105,7 @@ main{
 }
 .people-img{
   display: flex;
+  gap: 30px;
   
 }
 .delete-edit{
@@ -152,7 +153,8 @@ main{
 }
 .owner-plus-img{
   display: flex;
-  justify-content: flex-wrap;
+  justify-content: flex-start;
+  gap: 30px;
   grid-area: ownerinfo;
 }
 .treatment{

@@ -1,3 +1,4 @@
+
 class Person:
 
     def __init__(self, input_first_name, input_last_name, input_dob, input_address, input_email, input_phone_number, input_img = None):

@@ -49,14 +49,14 @@ def pet_edit(id):
     owner = owner_repo.find_owner_by_id(request.form['owner'])
     pet = Pet(name,dob,weight,sex,species,breed, treatment)
     pet.add_owner(owner)
-    pet.add_id(id)
+    pet.add_id(int(id))
     if chipped == "True":
         pet.change_chip_status()
     pet_repo.update_pets(pet)
     care = care_repo.find_care_by_pet_id(int(id))
     care = Care(pet,veterian)
     care_repo.update(care)
-    return redirect('/pets')
+    return redirect(f'/pets/{pet.id}')
 
 @pets_blueprint.route('/pets/new-pet')
 def new_pet_form():

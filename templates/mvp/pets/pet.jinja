@@ -11,7 +11,7 @@
             <div class="pet-info">
                 <h2>{{pet.name}}</h2>
                 <h4>DOB: {{pet.dob}}</h4>
-                <h4>Species: {{pet.species}}</h4>
+                <h4>Species: {{pet.species.name}}</h4>
                 <h4>Breed: {{pet.breed}}</h4>
                 <h4>Sex: {{pet.sex}}</h4>
                 {% if pet.chipped  %}
@@ -20,7 +20,11 @@
                 <h4> Not Chipped </h4>
                 {% endif %}
                 <h4>Weight: {{pet.weight}}</h4>
-                <h4>Pet's Veterian: <a href="/vets/{{veterian.id}}">{{veterian.full_name()}}</a></h4>
+                {% if  veterian == None %}
+                    <h4>Pet's Veterian: No veterian assign to this pet!!!!</h4>
+                {% else %}
+                    <h4>Pet's Veterian: <a href="/vets/{{veterian.id}}">{{veterian.full_name()}}</a></h4>
+                {% endif %}
                 <div class="delete-edit">
                     <form action="/pets/{{pet.id}}/delete" method="post">
                         <button class="delete-button" ><i class="fa fa-trash-o fa-3x" style="color:red;"> </i></button>

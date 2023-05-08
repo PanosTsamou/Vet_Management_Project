@@ -4,6 +4,7 @@ from modules.care import Care
 from modules.pet import Pet
 from modules.vet import Veterian
 
+import repositories.species_repository as species_repo
 import repositories.pet_repository as pet_repo
 import repositories.veterian_repository as vet_repo
 import repositories.owner_repository as owner_repo
@@ -45,7 +46,8 @@ def find_pets_by_vet(veterian_id):
     results = run_sql(sql, values)
     for row in results:
         owner= owner_repo.find_owner_by_id(row['owner_id'])
-        pet = Pet(row['name'], row['dob'], row['weight'], row['sex'], row['species'], row['breed'], row['img'], row['treatment'], row['chipped'], row['chip_number'], owner, row['id'] )
+        species =    species_repo.find_species_by_id(row['species_id']) 
+        pet = Pet(row['name'], row['dob'], row['weight'], row['sex'], species, row['breed'], row['img'], row['treatment'], row['chipped'], row['chip_number'], owner, row['id'] )
         pets.append(pet)
     return pets
 

@@ -6,7 +6,12 @@
         <label for="dob">DOB</label>
         <input type="text" name="dob" id="dob" value="{{pet.dob}}">
         <label for="species">Species</label>
-        <input type="text" name="species" id="species" value="{{pet.species}}">
+        <select id="species" name="species">
+            {% for spec in species %}
+                <option value={{spec.id}} {% if spec.id == pet.species.id %} selected="selected"
+                {% endif %}> {{spec.name}} </option>
+            {% endfor %}
+        </select>
         <label for="breed">Breed</label>
         <input type="text" name="breed" id="breed" value="{{pet.breed}}">
         <label for="sex">Sex</label>

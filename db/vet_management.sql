@@ -67,7 +67,7 @@ CREATE TABLE pets(
     dob VARCHAR(255),
     weight INT,
     sex VARCHAR(255),
-    species VARCHAR(255),
+    species_id INT REFERENCES species(id) ON DELETE CASCADE,
     breed VARCHAR(255),
     img VARCHAR(255), 
     treatment  VARCHAR(255),
@@ -81,7 +81,7 @@ CREATE TABLE pets(
 CREATE TABLE care(
     id SERIAL PRIMARY KEY,
     pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
-    veterian_id INT NOT NULL REFERENCES vets(id) ON DELETE CASCADE
+    veterian_id INT  REFERENCES vets(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appointments(

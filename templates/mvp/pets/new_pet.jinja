@@ -8,7 +8,11 @@
             <label for="dob">DOB</label>
             <input type="text" name="dob" id="dob" >
             <label for="species">Species</label>
-            <input type="text" name="species" id="species" placeholder="dog,cat,et.">
+            <select id="species" name="species">
+                {% for spec in species %}
+                    <option value={{spec.id}}> {{spec.name}} </option>
+                {% endfor %}
+            </select>
             <label for="breed">Breed</label>
             <input type="text" name="breed" id="breed" >
             <label for="sex">Sex</label>

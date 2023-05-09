@@ -35,7 +35,7 @@ def update_owner_details(id):
     owner = Owner(first_name, last_name, dob, address, email, phone_number)
     owner.add_id(id)
     owner_repo.update_owner(owner)
-    return redirect('/owners')
+    return redirect(f'/owners/{owner.id}')
 
 @owners_blueprint.route("/owners/new-owner")
 def new_owner_form():

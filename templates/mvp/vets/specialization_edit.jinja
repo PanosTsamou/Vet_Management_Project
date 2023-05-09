@@ -1,0 +1,22 @@
+{% extends "base-form.jinja" %}
+
+{% block content %}
+    <div class="new-display-form">
+        <h2>Edit {{veterian.full_name()}} Specializations</h2>
+        <form action="/vets/{{veterian.id}}/specialization/edit" method="post">
+            <label for="specialization">Specializations</label>
+            <select id="specialization" name="specialization">
+                {% for spec in specializations %}
+                    <option value={{spec.id}}> {{spec.name}} </option>
+                {% endfor %}
+            </select>
+            <label for="species">Species</label>
+            <select id="species" name="species">
+                {% for spec in species %}
+                    <option value={{spec.id}}> {{spec.name}} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock content %}

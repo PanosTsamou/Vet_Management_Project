@@ -1,0 +1,18 @@
+{% extends "base-form.jinja" %}
+
+{% block content %}
+    <div class="new-display-form">
+        <h2>Delete {{veterian.full_name()}} Specializations</h2>
+        <form action="/vets/{{veterian.id}}/specialization/delete" method="post">
+            <label for="specialization">Specializations</label>
+            <select id="specialization" name="specialization">
+                {% for spec in specializations %}
+                    
+                    <option value={{spec.id}}> {{spec.name}} </option>
+                   
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock content %}

@@ -16,7 +16,8 @@ pets_blueprint = Blueprint("pets", __name__)
 @pets_blueprint.route('/pets')
 def all_pets():
     all_pets_to_display = pet_repo.all_pets()
-    return render_template("mvp/pets/pets.jinja", all_pets_to_display = all_pets_to_display)
+
+    return render_template("mvp/pets/pets.jinja", all_pets_to_display = all_pets_to_display, species = species_repo.all_species())
 
 @pets_blueprint.route('/pets/<id>/delete',  methods = ["POST"])
 def delete_pet(id):

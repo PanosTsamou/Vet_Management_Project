@@ -29,7 +29,7 @@ def find_care_by_id(id):
     care = None
     sql = "SELECT * FROM care WHERE id= %s"
     values = [id]
-    result = run_sql(sql, values)[0]
+    result = run_sql(sql, values)
     if result:
         result = result[0]
         pet = pet_repo.find_pet_by_id(result['pet_id'])

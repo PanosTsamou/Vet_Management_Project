@@ -3,7 +3,9 @@ from modules.vet import Veterian
 from modules.pet import Pet
 from modules.care import Care
 from modules.species import Species
+from modules.specialization import Specialization
 
+import repositories.specialization_repository as spec_repo
 import repositories.species_repository as species_repo
 import repositories.owner_repository as owner_repo
 import repositories.veterian_repository as vet_repo
@@ -11,6 +13,7 @@ import repositories.pet_repository as pet_repo
 import repositories.care_repository as care_repo
 
 care_repo.delete_all()
+spec_repo.delete_all()
 pet_repo.delete_all()
 species_repo.delete_all()
 vet_repo.delete_all()
@@ -64,3 +67,27 @@ care3 = Care(pet3, veterian1)
 care_repo.add_care(care3)
 care4 = Care(pet4, veterian2)
 care_repo.add_care(care4)
+
+
+spec1 = Specialization(species1, veterian1)
+spec_repo.add_specialization(spec1)
+spec2 = Specialization(species2, veterian1)
+spec_repo.add_specialization(spec2)
+spec3 = Specialization(species3, veterian1)
+spec_repo.add_specialization(spec3)
+spec4 = Specialization(species6, veterian1)
+spec_repo.add_specialization(spec4)
+spec5 = Specialization(species7, veterian1)
+spec_repo.add_specialization(spec5)
+spec6 = Specialization(species4, veterian2)
+spec_repo.add_specialization(spec6)
+spec7 = Specialization(species5, veterian2)
+spec_repo.add_specialization(spec7)
+spec8 = Specialization(species6, veterian2)
+spec_repo.add_specialization(spec8)
+spec9 = Specialization(species7, veterian2)
+spec_repo.add_specialization(spec9)
+spec10 = Specialization(species8, veterian2)
+spec_repo.add_specialization(spec10)
+spec11 = Specialization(species9, veterian2)
+spec_repo.add_specialization(spec11)

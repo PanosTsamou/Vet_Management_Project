@@ -26,6 +26,26 @@
             <img src="{{ url_for('static', filename='no_img.png') }}" width="150" height="200">
         </section>
         <section>
+            <form>
+                <label for="specialization">Specialized on:</label>
+                <div>
+                    <ul class="columns" data-columns="2">
+                        {% for spec in specializations %}
+                            <li>{{spec.name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Specialization</button>
+                    <div class="dropdown-content">
+                        <a href="/vets/{{veterian.id}}/specialization/edit">Edit</a>
+                        <a href="/vets/{{veterian.id}}/specialization/new">New</a>
+                        <a href="/vets/{{veterian.id}}/specialization/delete">Delete</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section>
             <h2>Pets Under my Care</h2>
             <div class = "people-pet-display">
                 {% for pet in list_of_pets %}

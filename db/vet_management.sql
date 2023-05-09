@@ -94,8 +94,8 @@ CREATE TABLE appointments(
 
 CREATE TABLE specializations(
     id SERIAL PRIMARY KEY,
-    species_id INT NOT NULL REFERENCES species(id),
-    vets_id INT NOT NULL REFERENCES vets(id)
+    species_id INT NOT NULL REFERENCES species(id) ON DELETE  CASCADE,
+    veterian_id INT NOT NULL REFERENCES vets(id) ON DELETE CASCADE
 );
 
 

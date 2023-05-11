@@ -5,6 +5,7 @@ from modules.care import Care
 from modules.species import Species
 
 import repositories.species_repository as species_repo
+import repositories.specialization_repository as spec_repo
 import repositories.pet_repository as pet_repo
 import repositories.owner_repository as owner_repo
 import repositories.veterian_repository as vet_repo
@@ -37,7 +38,11 @@ def pet_display(id):
 
 @pets_blueprint.route("/pets/<id>/edit", methods=["POST"])
 def delete_edit(id):
-    return render_template("/mvp/pets/pet_edit.jinja", pet = pet_repo.find_pet_by_id(int(id)), vets = vet_repo.all_vets(), owners = owner_repo.all_owners(), pet_veterian = care_repo.find_vet_by_pet_id(int(id)), species = species_repo.all_species())
+    pet = pet_repo.find_pet_by_id(int(id))
+    print( pet.species.id)
+    vets = spec_repo.find_vet_by_species_id(pet.species.id)
+    print(vets)
+    return render_template("/mvp/pets/pet_edit.jinja", pet = pet_repo.find_pet_by_id(int(id)), vets = vets, owners = owner_repo.all_owners(), pet_veterian = care_repo.find_vet_by_pet_id(int(id)), species = species_repo.all_species())
 
 @pets_blueprint.route("/pets/<id>", methods=["POST"])
 def pet_edit(id):

@@ -4,7 +4,9 @@ from modules.pet import Pet
 from modules.care import Care
 from modules.species import Species
 from modules.specialization import Specialization
-
+from modules.appointment import Appointment
+ 
+import repositories.appointment_repository as appoint_repo
 import repositories.specialization_repository as spec_repo
 import repositories.species_repository as species_repo
 import repositories.owner_repository as owner_repo
@@ -12,6 +14,7 @@ import repositories.veterian_repository as vet_repo
 import repositories.pet_repository as pet_repo
 import repositories.care_repository as care_repo
 
+appoint_repo.delete_all()
 care_repo.delete_all()
 spec_repo.delete_all()
 pet_repo.delete_all()
@@ -91,3 +94,14 @@ spec10 = Specialization(species8, veterian2)
 spec_repo.add_specialization(spec10)
 spec11 = Specialization(species9, veterian2)
 spec_repo.add_specialization(spec11)
+
+appointment1 = Appointment('check up', '12/3/2023', '5pm', '', pet1, veterian1)
+appoint_repo.add_appointment(appointment1)
+appointment2 = Appointment('check up', '12/3/2023', '9am', '', pet2, veterian1)
+appoint_repo.add_appointment(appointment2)
+appointment3 = Appointment('sergury', '19/5/2023', '11am', '', pet2, veterian1)
+appoint_repo.add_appointment(appointment3)
+appointment4 = Appointment('neutralize', '25/3/2023', '2pm', '', pet2, veterian1)
+appoint_repo.add_appointment(appointment4)
+appointment5 = Appointment('vaccination', '8/4/2023', '3am', '', pet3, veterian2)
+appoint_repo.add_appointment(appointment5)

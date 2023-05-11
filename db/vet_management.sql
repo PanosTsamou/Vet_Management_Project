@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS appointments;
+DROP TABLE IF EXISTS treatments;
 DROP TABLE IF EXISTS care;
 DROP TABLE IF EXISTS specializations;
 DROP TABLE IF EXISTS owners_users;
@@ -84,11 +85,26 @@ CREATE TABLE care(
     veterian_id INT  REFERENCES vets(id) ON DELETE CASCADE
 );
 
+CREATE TABLE treatments(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    date VARCHAR(255),
+    duration VARCHAR(255),
+    description VARCHAR(255),
+    finished BOOLEAN,
+    pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
+    veterian_id INT NOT NULL REFERENCES vets(id) ON DELETE CASCADE
+
+);
+
 CREATE TABLE appointments(
     id SERIAL PRIMARY KEY,
-    pet_id INT NOT NULL REFERENCES pets(id),
-    vets_id INT NOT NULL REFERENCES vets(id),
-    description VARCHAR(255)
+    title VARCHAR(255),
+    date VARCHAR(255),
+    time VARCHAR(255),
+    description VARCHAR(255),
+    pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
+    veterian_id INT NOT NULL REFERENCES vets(id) ON DELETE CASCADE
 );
 
 

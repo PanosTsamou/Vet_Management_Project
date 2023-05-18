@@ -53,11 +53,10 @@ def find_vet_by_species_id(species_id):
     veterians = []
     sql = "SELECT vets.* FROM vets INNER JOIN specializations ON specializations.veterian_id = vets.id WHERE species_id = %s"
     values = [species_id]
-    result = run_sql(sql, values)
-    if result:
-        result = result[0]
-        veterian = Veterian(result['first_name'], result['last_name'], result['dob'], result['address'], result['email'], result['tel_number'])
-        veterian.add_id(result['id'])
+    results = run_sql(sql, values)
+    for row in results:
+        veterian = Veterian(row['first_name'], row['last_name'], row['dob'], row['address'], row['email'], row['tel_number'])
+        veterian.add_id(row['id'])
         veterians.append(veterian)
     return veterians
 

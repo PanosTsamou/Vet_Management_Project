@@ -1,0 +1,39 @@
+{% extends "base.jinja" %}
+{% block aside %}
+    <a href="/appointments/new-appointment"><h2>Add a New Customer</h2></a>
+{% endblock aside %}
+
+{% block content %}
+    <div class="people-display">
+        <section class="people-img">
+            <div>
+                <h2>{{appointment.title}}</h2>
+                <h4>Date: {{appointment.date}}</h4>
+                <h4>time: {{appointment.time}}</h4>
+                <h4>Pet Owner:<a href="/owners/{{appointment.pet.owner.id}}"> {{appointment.pet.owner.full_name()}}</a></h4>
+                <h4>Veterian: <a href="/vets/{{appointment.veterian.id}}">{{appointment.veterian.full_name()}}</a></h4>
+                <div class="delete-edit">
+                    <form action="/appointments/{{appointment.id}}/delete" method="post">
+                            <button class="delete"><i class="fa fa-trash-o fa-3x" style="color:red"></i></button>
+                    </form>
+                    <form action="/appointments/{{appointment.id}}/edit" method="post">
+                        <button class="edit"><i class="fa fa-pencil-square-o fa-3x" style="color:rgb(112, 167, 29)"></i></button>
+                
+                        {# <input type="submit" value="Edit"/> #}
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section>
+            <a href="/pets/{{appointment.pet.id}}"><h3>{{appointment.pet.name}}</h3></a>
+            <h4>Spicies: {{appointment.pet.species.name}}</h4>
+            <h4>Sex: {{appointment.pet.sex}}</h4>
+            <h4>Chip: {{appointment.pet.chip_number}}</h4>
+
+        </section>
+        <section>
+        <h2>Description</h2>
+        <p>{{appointment.description}}</p>
+        </section>
+    </div>
+{% endblock content %}

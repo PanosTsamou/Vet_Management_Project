@@ -1,0 +1,43 @@
+{% extends "base.jinja" %}
+{% block aside %}
+    <aside>
+        <h2>Short by Doctors</h2>
+        <nav>
+            <ul>
+                {% for veterian in vets %}
+                    <li><a>{{veterian.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </aside>
+{% endblock aside %}
+
+{% block content %}
+    <div class="container aside">
+        <div class= "container row">
+
+            {% for appointment in all_appointments_to_display %}
+                
+                <a href="/appointments/{{appointment.id}}">
+                    <div class="pets-display">
+                        <div class="pets-info-display">
+                            
+                            <h2>{{appointment.title}}</h2>
+                            <h2>Date: {{appointment.date}}</h2>
+                            <h2>Time: {{appointment.time}}</h2>
+                            <h2>Owner: {{appointment.pet.owner.full_name()}}</h2>
+                            <h2>Veterian: {{appointment.veterian.full_name()}}</h2>
+                        </div>
+                        <form class="button" action="/appointments/{{appointment.id}}/delete" method="post">
+                            <button class="delete-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </a>
+                
+            {% endfor %}
+        </div>
+        <aside>
+            <a href="/appointments/new-appointment"><h2>New Appointment</h2></a>
+        </aside>
+    </div>
+{% endblock content %}

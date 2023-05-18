@@ -1,0 +1,31 @@
+{% extends "base-form.jinja" %}
+
+{% block content %}
+   
+        <form class= "new-display-form" action="/appointments" method="post">
+
+            <label for="pets">Pets</label>
+            <select id="pets" name="pets">
+                {% for pet in pets %}
+                    <option value={{pet.id}}> {{pet.name}} {{pet.chip_number}}</option>
+                {% endfor %}
+            </select>
+            <label for="veterian">Vets</label>
+            <select id="veterian" name="veterian">
+                {% for vet in vets %}
+                    <option value={{vet.id}}> {{vet.full_name()}} </option>
+                {% endfor %}
+            </select>
+            <label for="cause">Cause</label>
+            <input type="text" name="title" id="cause" placeholder='Cause of the visite'>
+            <label for="date">Date</label>
+            <input type="text" name="date" id="date" >
+            <label for="time">Time</label>
+            <input type="text" name="time" id="time" >
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    
+{% endblock content %}

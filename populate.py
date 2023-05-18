@@ -46,8 +46,10 @@ owner2 = Owner("Molly", "Brown", "20/6/2003", "23  Walnut street", "mollyb@gmail
 owner_repo.add_owner(owner2)
 veterian1 = Veterian("Aaron", "McCurdy", "2/7/1983", "3  Walnut street", "aaronmc@gmail.com", "77232437169", "/img/aaron")
 vet_repo.add_veterian(veterian1)
-veterian2 = Veterian("Patric", "Coile", "15/10/1995", "20 Mary Crescent", "patickc@gmail.com", "77232384933", "/img/patric")
+veterian2 = Veterian("Patrick", "Coile", "15/10/1995", "20 Mary Crescent", "patickc@gmail.com", "77232384933", "/img/patric")
 vet_repo.add_veterian(veterian2)
+veterian3 = Veterian("Robert", "Coyle", "15/10/1999", "20 Long st", "RobertC@gmail.com", "77232322238", "/img/Robert")
+vet_repo.add_veterian(veterian3)
 
 pet1= Pet("blacky","12/3/2022",15,"male",species1)
 pet1.add_owner(owner1)
